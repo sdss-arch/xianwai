@@ -155,7 +155,6 @@ node tests/browser/check.mjs
 贡献流程与代码规范见[参与指南](CONTRIBUTING.md)；参与前请阅读[行为准则](CODE_OF_CONDUCT.md)。所有贡献者提交即表示同意以 [MIT 许可证](LICENSE)授权其贡献。
 
 ## 联系方式
-欢迎大家随时打扰我
 <img width="820" height="1219" alt="01f447b206a728380b05753dc0cfc4d3" src="https://github.com/user-attachments/assets/94d63ff0-bfb5-4789-ad38-2d1e3b338063" />
 <img width="940" height="1705" alt="6fd4eccd8087dec5bfa64f380335a150" src="https://github.com/user-attachments/assets/93cb616a-6e18-42d0-a928-3aa4db111e95" />
 
