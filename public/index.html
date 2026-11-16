@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="结合上级的沟通习惯，解读职场对话和下一步。">
+  <link rel="manifest" href="/app.webmanifest">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" type="module"></script>
+  <title>弦外 · 职场对话解读</title>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#analyze" class="brand" aria-label="弦外首页"><span class="brand-mark" data-icon="brand"></span><span>弦外<small>职场沟通笔记</small></span></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#analyze" data-route="analyze"><span data-icon="desk"></span><span>工作台</span></a>
+        <a href="#profiles" data-route="profiles"><span data-icon="profiles"></span><span>上级档案</span></a>
+        <a href="#history" data-route="history"><span data-icon="journal"></span><span>复盘</span></a>
+        <a href="#settings" data-route="settings"><span data-icon="settings"></span><span>设置</span></a>
+      </nav>
+      <div class="sidebar-end"><span data-icon="lock"></span><span>个人工作区<small>记录与档案保存在本机</small></span></div>
+    </aside>
+
+    <main id="main">
+      <header class="mobile-brand">
+        <a href="#analyze" class="brand" aria-label="弦外首页"><span class="brand-mark" data-icon="brand"></span><span>弦外</span></a>
+        <span class="mobile-current"><span data-icon="lock"></span> 本机工作区</span>
+      </header>
+      <section id="analyze-view" aria-labelledby="title">
+        <header class="page-heading heading-actions">
+          <div><p class="date-line" id="desk-date"></p><h1 id="title">沟通工作台</h1></div>
+          <div class="desk-actions">
+            <button type="button" class="button secondary" id="quick-import"><span data-icon="upload"></span>导入音频</button>
+            <button type="button" class="button primary" id="new-conversation"><span data-icon="plus"></span>新建对话</button>
+          </div>
+        </header>
+        <div class="desk-overview" aria-label="工作区概览">
+          <button type="button" class="desk-tile draft-tile" id="resume-draft">
+            <span class="desk-icon" data-icon="edit"></span><span class="tile-text"><strong id="draft-title">当前草稿</strong><small id="draft-description">暂无草稿</small></span><span class="tile-arrow" data-icon="arrow"></span>
+          </button>
+          <button type="button" class="desk-tile follow-tile" id="open-followups">
+            <span class="desk-icon" data-icon="clock"></span><span class="tile-text"><strong id="followup-title">待跟进</strong><small id="followup-description">暂无待确认记录</small></span><span class="tile-arrow" data-icon="arrow"></span>
+          </button>
+          <button type="button" class="desk-tile profiles-tile" id="open-profiles">
+            <span class="desk-icon" data-icon="profiles"></span><span class="tile-text"><strong id="profile-overview-title">上级档案</strong><small id="profile-overview-description">记录工作习惯与观察</small></span><span class="tile-arrow" data-icon="arrow"></span>
+          </button>
+        </div>
+        <div class="columns">
+          <form id="analysis-form" class="panel input-panel">
+            <header class="panel-heading"><div><span class="section-label">对话</span><h2>记录原话</h2></div><a href="#settings" id="model-indicator" class="model-indicator">模型服务</a></header>
+            <div class="source-switch" role="group" aria-label="对话来源">
+              <button type="button" id="source-text" aria-pressed="true"><span data-icon="example"></span>文字</button>
+              <button type="button" id="source-audio" aria-pressed="false"><span data-icon="mic"></span>录音与音频</button>
+            </div>
+            <div id="who-field">
+              <label for="profile-select">沟通对象</label>
+              <div class="select-wrap">
+                <span data-icon="person" class="select-icon"></span>
+                <select id="profile-select"><option value="">不指定上级</option></select>
+                <span data-icon="chevron" class="select-arrow"></span>
+              </div>
+              <p id="profile-note" class="field-note"></p>
+            </div>
+            <div id="text-input">
+              <div class="label-row"><label for="dialogue">对话原文</label><button type="button" id="load-example" class="text-button">载入示例</button></div>
+              <textarea id="dialogue" maxlength="2500" rows="5" required placeholder="粘贴对方的原话，保留前后几句会更好。"></textarea>
+              <div class="under-field"><span id="draft-status"></span><span id="character-count">0 / 2500</span></div>
+            </div>
+            <div id="audio-input" hidden>
+              <div class="audio-box">
+                <div class="audio-heading"><h3>添加音频</h3><span id="recording-time" class="recording-time" role="timer" hidden></span></div>
+                <div class="audio-actions">
+                  <button type="button" class="button secondary" id="record-audio"><span data-icon="mic"></span><span id="record-label">开始录音</span></button>
+                  <button type="button" class="button secondary" id="import-audio"><span data-icon="upload"></span>导入音频</button>
+                  <input type="file" id="audio-file" accept="audio/*,.m4a,.mp3,.wav,.aac,.webm,.ogg,.flac,.mp4" hidden>
+                </div>
+                <p class="field-note audio-note">导入后在本机自动转写，再校对和选句。单段最长 2 分钟，最大 40 MB。</p>
+                <p id="microphone-note" class="field-note audio-note" hidden></p>
+                <div id="audio-preview" class="audio-preview" hidden>
+                  <div class="label-row"><span id="audio-name"></span><button type="button" id="clear-audio" class="text-button">移除音频</button></div>
+                  <audio id="audio-player" controls preload="metadata" aria-label="回听原始音频"></audio>
+                  <div class="audio-actions">
+                    <button type="button" id="transcribe-audio" class="button secondary"><span data-icon="example"></span>转成文字</button>
+                    <a id="save-audio" class="text-button">保存原音频</a>
+                    <button type="button" id="cancel-transcription" class="text-button" hidden>取消转写</button>
+                  </div>
+                  <p id="transcription-state" class="field-note audio-note" role="status" hidden></p>
+                </div>
+                <p id="audio-error" class="error" role="alert" hidden></p>
+              </div>
+              <section id="transcript" class="transcript" aria-labelledby="transcript-heading" hidden>
+                <div class="label-row"><h3 id="transcript-heading" tabindex="-1">校对并选句</h3><button type="button" id="toggle-all-lines" class="text-button">全选</button></div>
+                <p class="field-note audio-note">回听后可直接改字。解读时只会使用勾选的句子。</p>
+                <div id="transcript-lines"></div>
+                <p id="selection-count" class="field-note selection-count" role="status"></p>
+              </section>
+            </div>
+            <div id="context-field">
+              <label for="context">当时是什么情况？ <span class="optional">选填</span></label>
+              <textarea id="context" maxlength="700" rows="3" placeholder="例如：明早要给客户看，方案已经改过两版。"></textarea>
+              <p id="context-guide" class="field-note" hidden>可以补一句前情，或写下对方说完后有没有排期、撤案、给资源。</p>
+            </div>
+            <div class="personal-use" id="personal-use" hidden>
+              <label class="inline-check" id="personal-toggle-label" hidden><input type="checkbox" id="use-personal"> 解读时参考我的信息</label>
+              <a class="text-button" id="personal-settings-link" href="#personal">设置个人信息</a>
+            </div>
+            <details class="workspace-options">
+              <summary>场景与回复口吻</summary>
+              <div class="two-fields">
+                <div><label for="mobile-scenario">职场场景</label><select id="mobile-scenario"><option value="">自动判断</option></select></div>
+                <div><label for="mobile-tone">回复口吻</label><select id="mobile-tone"></select></div>
+              </div>
+            </details>
+            <p id="analysis-error" class="error" role="alert" hidden></p>
+            <div class="submit-row">
+              <button type="submit" class="button primary analyze-button"><span id="analyze-label">开始解读</span><span class="button-arrow" data-icon="arrow"></span></button>
+              <p class="fine-print">分析会使用你提交的对话、背景及所选档案。</p>
+            </div>
+          </form>
+          <div class="result-column">
+            <section id="result" class="panel result-panel" aria-labelledby="result-heading"></section>
+            <section class="panel recent-panel" aria-labelledby="recent-title">
+              <header class="label-row"><h2 id="recent-title">最近复盘</h2><a href="#history" class="text-button">全部记录 <span data-icon="arrow"></span></a></header>
+              <div id="recent-list"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="profiles-view" aria-labelledby="profiles-title" hidden>
+        <header class="page-heading profiles-heading">
+          <div><h1 id="profiles-title">上级档案</h1><p>记下每位上级的沟通习惯，让解读更贴近实际。</p></div>
+          <button type="button" class="button primary" id="new-profile"><span data-icon="plus"></span>新建档案</button>
+        </header>
+        <div class="profile-toolbar"><label for="profile-search" class="sr-only">搜索上级档案</label><input type="search" id="profile-search" placeholder="搜索称呼、角色或观察"></div>
+        <details class="profile-transfer">
+          <summary>迁移档案</summary>
+          <p>在另一台设备或从原入口换到 HTTPS 时，可导出再导入。同一份档案只导入一次。</p>
+          <div class="audio-actions">
+            <button type="button" id="export-profiles" class="button secondary">导出档案</button>
+            <button type="button" id="import-profiles" class="button secondary">导入档案</button>
+            <input type="file" id="profile-file" accept=".json,application/json" hidden>
+          </div>
+        </details>
+        <div id="profile-list" class="profile-list"></div>
+      </section>
+      <section id="history-view" aria-labelledby="history-title" hidden>
+        <header class="page-heading"><h1 id="history-title">沟通复盘</h1><p>回看原话和当时的判断，记录后来确认的要求。</p></header>
+        <div class="source-switch history-switch" role="group" aria-label="复盘来源">
+          <button type="button" id="show-reviews" aria-pressed="true"><span data-icon="journal"></span>解读记录</button>
+          <button type="button" id="show-recordings" aria-pressed="false"><span data-icon="mic"></span>本机录音</button>
+        </div>
+        <div id="review-area">
+          <div class="review-toolbar panel">
+            <div><label for="review-search">搜索记录</label><input type="search" id="review-search" placeholder="搜原话、回复、标签或跟进笔记"></div>
+            <div><label for="review-filter">状态</label><select id="review-filter"><option value="">全部状态</option><option value="open">待跟进</option><option value="confirmed">已确认</option><option value="revised">解读有偏差</option><option value="suggested">待审核档案建议</option></select></div>
+            <div><label for="review-profile-filter">上级档案</label><select id="review-profile-filter"><option value="">全部档案</option></select></div>
+          </div>
+          <p id="review-count" class="review-count" aria-live="polite"></p>
+          <div id="review-list" class="review-list"></div>
+        </div>
+        <div id="recordings-list" class="review-list" hidden></div>
+      </section>
+      <section id="settings-view" aria-labelledby="settings-title" hidden>
+        <header class="page-heading"><h1 id="settings-title">设置</h1><p>管理模型和本机记录。</p></header>
+        <div id="provider-settings"></div>
+        <form id="personal-profile" class="panel settings-card personal-profile" hidden>
+          <header><h2 id="personal-heading" tabindex="-1">个人信息</h2></header>
+          <div class="two-fields">
+            <div><label for="self-position">职位</label><input id="self-position" maxlength="60" placeholder="例如：客户运营专员"></div>
+            <div><label for="self-role">当前项目的角色</label><input id="self-role" maxlength="95" placeholder="例如：交付执行，负责与客户沟通"></div>
+          </div>
+          <label for="self-authority">职责与权限</label>
+          <textarea id="self-authority" rows="2" maxlength="160" placeholder="例如：能协调排期，报价和对外承诺要主管批准"></textarea>
+          <label for="self-preference">性格与沟通偏好</label>
+          <textarea id="self-preference" rows="2" maxlength="140" placeholder="例如：习惯直接说结论，有分歧时更愿意先私下沟通"></textarea>
+          <p>保存在当前设备。勾选「解读时参考我的信息」后，本次会把这些资料一起提交给所选模型，帮助判断你能做什么、怎么回复。</p>
+          <div class="audio-actions">
+            <button class="button primary" type="submit">保存个人信息</button>
+            <button class="button secondary" type="button" id="export-personal">导出个人信息</button>
+            <button class="button secondary" type="button" id="import-personal">导入个人信息</button>
+            <input type="file" id="personal-file" accept=".json,application/json" hidden>
+          </div>
+          <p id="personal-status" class="settings-status" role="status" hidden></p>
+        </form>
+        <section class="panel settings-data">
+          <header><span class="section-label">存储</span><h2>本机数据</h2></header>
+          <p>草稿、档案和录音保存在这台设备上。解读和提炼档案建议时，相应的文字和档案线索会发送给当前模型服务。</p>
+          <a class="button secondary" href="#profiles">迁移上级档案</a>
+        </section>
+      </section>
+    </main>
+  </div>
+  <dialog id="profile-dialog" aria-labelledby="profile-title">
+    <form id="profile-form">
+      <header class="dialog-header">
+        <div><h2 id="profile-title">新建上级档案</h2><p>写下观察到的行为和原话。积累几条具体例子，解读会更有依据。</p></div>
+        <button type="button" class="icon-button" id="close-profile" aria-label="关闭"><span data-icon="close"></span></button>
+      </header>
+      <label for="profile-name">怎么称呼这位上级？</label>
+      <input id="profile-name" required maxlength="24" placeholder="例如：林主管（可以用化名）">
+      <label for="profile-position">你们的工作关系 <span class="optional">选填</span></label>
+      <input id="profile-position" maxlength="40" placeholder="例如：直属上级 · 产品负责人">
+      <fieldset>
+        <legend>你观察到的沟通习惯 <span class="optional">选填，可多选</span></legend>
+        <div id="trait-options" class="traits"></div>
+      </fieldset>
+      <label for="profile-priority">他通常在意什么？ <span class="optional">选填</span></label>
+      <textarea id="profile-priority" rows="2" maxlength="200" placeholder="例如：对外汇报前，希望先看到可演示的版本。"></textarea>
+      <label for="profile-observations">有代表性的例子 <span class="optional">选填</span></label>
+      <textarea id="profile-observations" rows="4" maxlength="1200" placeholder="例如：上次他说「你先过一遍」，后来明确让我当天改出可用稿。"></textarea>
+      <button type="button" id="read-habits" class="text-button habits-button"><span data-icon="journal"></span><span id="read-habits-label">从例子梳理沟通习惯</span></button>
+      <div id="habit-result" class="result-card" aria-live="polite" hidden></div>
+      <p id="profile-error" class="error" role="alert" hidden></p>
+      <footer class="dialog-actions">
+        <button type="button" id="delete-profile" class="text-button danger" hidden>删除档案</button>
+        <button type="button" id="cancel-profile" class="button secondary">取消</button>
+        <button type="submit" class="button primary">保存档案</button>
+      </footer>
+    </form>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+</body>
+</html>

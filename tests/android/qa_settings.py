@@ -1,0 +1,16 @@
+from qa_device import *
+
+assert is_qa_device()
+locate('模型 API')
+edit_input(0, 'https://127.0.0.1:8791/v1', clear=True)
+edit_input(1, 'fixture-compatible-model', clear=True)
+edit_input(2, 'wrong-test-key', clear=True)
+tap('测试连接', scroll='down')
+locate(lambda s: '拒绝' in s and '密钥' in s, timeout=20, scroll='down')
+swipe('up')
+edit_input(2, 'fixture-test-key', clear=True)
+tap('测试连接', scroll='down')
+locate('连接成功。测试只发送了示例消息。', timeout=30, scroll='down')
+tap('保存设置', scroll='down')
+locate('模型设置已保存。', scroll='down')
+print('Signed APK used the native HTTPS client. Wrong key rejected, valid key connected, settings saved.', flush=True)

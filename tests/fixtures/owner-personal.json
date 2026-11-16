@@ -1,0 +1,10 @@
+{
+  "type": "xianwai-personal",
+  "version": 1,
+  "profile": {
+    "position": "客户运营经理",
+    "role": "项目负责人",
+    "authority": "我可以在已批预算内确定排期和确认对外承诺。超预算由主管拍板。",
+    "preference": "喜欢明确任务边界，先给结论。"
+  }
+}

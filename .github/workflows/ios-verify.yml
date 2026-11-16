@@ -1,0 +1,38 @@
+name: Build iPhone app
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Package web interface and offline voice model
+        run: node android/build-assets.mjs ios/AppAssets
+      - name: Check packaged voice model
+        run: |
+          model=ios/AppAssets/web/voice-model/whisper-base/onnx
+          test -s ios/AppAssets/web/index.html
+          shasum -a 256 -c <<EOF
+          3e345e977b55620a37c0c2b2af0644e019afdfad562dcf71eb929bb7274285f9  $model/encoder_model_quantized.onnx
+          a6beb6baabb66f00b6a686d828c95ffca6146d51900cbad0266cad38f64cf861  $model/decoder_model_merged_quantized.onnx
+          EOF
+      - name: Build for iPhone without signing
+        working-directory: ios
+        run: |
+          xcodebuild -version
+          xcodebuild -project Xianwai.xcodeproj -scheme Xianwai -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath "$RUNNER_TEMP/xianwai" \
+            CODE_SIGNING_ALLOWED=NO build
+          app="$RUNNER_TEMP/xianwai/Build/Products/Release-iphoneos/Xianwai.app"
+          test -x "$app/Xianwai"
+          test -s "$app/AppAssets/web/index.html"
+          test -s "$app/PrivacyInfo.xcprivacy"

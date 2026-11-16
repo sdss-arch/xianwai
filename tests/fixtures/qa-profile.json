@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "profiles": [
+    {
+      "id": "mwi0vmwi-79mekva2ktb",
+      "name": "陈经理",
+      "position": "交付负责人",
+      "traits": [],
+      "priority": "进度与风险",
+      "observations": "临近评审时会先问可展示稿。",
+      "cases": []
+    }
+  ]
+}

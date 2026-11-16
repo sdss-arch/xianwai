@@ -1,0 +1,29 @@
+# Model and runtime caches (downloaded on first run)
+.runtime/
+
+# Node
+node_modules/
+
+# Test outputs
+tests/browser/*.png
+tests/browser/screenshots/
+tests/browser/results/
+tests/browser/mock-model-trace.jsonl
+tests/browser/android-real-model.jsonl
+tests/browser/qa-profile.json
+tests/android/shots/
+tests/android/notes-061.json
+
+# Build artifacts
+ios/AppAssets/
+Build/
+*.apk
+*.ipa
+*.xcarchive
+__pycache__/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

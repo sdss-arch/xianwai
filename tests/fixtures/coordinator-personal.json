@@ -1,0 +1,10 @@
+{
+  "type": "xianwai-personal",
+  "version": 1,
+  "profile": {
+    "position": "客户运营专员",
+    "role": "执行协调",
+    "authority": "我负责协调排期和起草客户回复，报价和对外承诺由主管拍板。",
+    "preference": "喜欢明确任务边界，先给结论。"
+  }
+}

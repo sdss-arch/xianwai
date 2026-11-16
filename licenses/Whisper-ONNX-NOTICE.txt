@@ -1,0 +1,4 @@
+This app distributes the quantized ONNX conversion of Whisper base from
+https://huggingface.co/Xenova/whisper-base/tree/64da57285918e20ea79ea5c88eed7197933abaa8
+under the Apache License, Version 2.0 (the Apache License text is also included
+as Transformers.js.txt). The original Whisper license is included as Whisper.txt.
