@@ -1,7 +1,7 @@
 {
   "name": "xianwai",
   "version": "0.6.1",
-  "description": "职场对话解读：贴入或录制一段对话，获得带原话依据的解读与可复制的回复，并长期积累上级沟通档案。",
+  "description": "AI 职场对话解读应用：贴入或录制一段对话，由本地大模型整理带原话依据的解读与可复制回复，并长期积累上级沟通档案。",
   "keywords": [
     "workplace",
     "dialogue-analysis",
