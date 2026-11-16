@@ -30,7 +30,7 @@ export function setupBrowserAPI(onChange) {
       document.body.prepend(banner);
     }
   }
-  const initial = fetch('/api/config').then(async response => {
+  const initial = fetch('api/config').then(async response => {
     const type = response.headers.get('content-type') || '';
     if (response.ok && type.includes('json')) defaults = await response.json();
     else enterDemoMode();
