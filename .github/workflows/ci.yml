@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: JavaScript syntax check
+        run: |
+          count=0
+          while IFS= read -r file; do
+            node --check "$file"
+            count=$((count + 1))
+          done < <(find . -path ./node_modules -prune -o -path ./public/vendor -prune -o \( -name '*.mjs' -o -name '*.js' \) -print)
+          echo "Checked $count JavaScript files."
+
+      - name: Analysis rules unit test
+        run: node tests/browser/subtext-actions-check.mjs
+
+      - name: Python syntax check
+        run: python3 -m py_compile tests/android/*.py
+
+      - name: PowerShell syntax check
+        run: >
+          pwsh -NoProfile -Command
+          '$errors = $null;
+          [void][System.Management.Automation.Language.Parser]::ParseFile("Start.ps1", [ref]$null, [ref]$errors);
+          if ($errors) { $errors | Format-List; exit 1 }'
+
+      - name: Server smoke test
+        run: |
+          node server.mjs > /tmp/server.log 2>&1 &
+          echo $! > /tmp/server.pid
+          curl -fsS --retry 10 --retry-delay 1 --retry-all-errors http://127.0.0.1:8787/api/config | grep -q contextual-2
+          curl -fsS http://127.0.0.1:8787/ | grep -q 'src="/app.js"'
+          kill "$(cat /tmp/server.pid)"

@@ -1,0 +1,38 @@
+# Normalize line endings: LF in the repository, platform-appropriate on checkout
+* text=auto
+
+*.cmd   text eol=crlf
+*.bat   text eol=crlf
+*.ps1   text eol=crlf
+*.sh    text eol=lf
+
+*.js    text
+*.mjs   text
+*.py    text
+*.java  text
+*.swift text
+*.yml   text
+*.yaml  text
+*.json  text
+*.md    text
+*.html  text
+*.css   text
+*.xml   text
+*.plist text
+
+# Binary assets
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.wav   binary
+*.m4a   binary
+*.wasm  binary
+*.onnx  binary
+*.gguf  binary
+*.cer   binary
+*.crt   binary
+*.pem   binary
+*.p12   binary
+*.apk   binary

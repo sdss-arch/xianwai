@@ -1,10 +1,20 @@
 # 弦外 · 职场对话解读 (Xianwai)
 
+[![CI](https://github.com/sdss-arch/xianwai/actions/workflows/ci.yml/badge.svg)](https://github.com/sdss-arch/xianwai/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/sdss-arch/xianwai)](https://github.com/sdss-arch/xianwai/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 贴入对话原文，或录音、导入音频并校对，再补充背景和选择一位上级。弦外会整理明确要求、可能的潜台词、原话依据和可复制的回复。可以为多位上级分别记录沟通习惯、优先事项和具体例子。模型也可以从例子中梳理沟通习惯，核对后加入档案。
 
 > 也可以看 [English README](README.md)。
+
+**📥 下载：** [Windows 压缩包](https://github.com/sdss-arch/xianwai/releases/latest) · [Android APK](https://github.com/sdss-arch/xianwai/releases/latest) · 或按下方说明从源码运行。
+
+## 界面截图
+
+| 载入示例的工作台 | 真实模型解读结果（本机 Qwen3-4B） |
+| --- | --- |
+| ![载入示例对话的弦外工作台](docs/screenshots/workbench.jpg) | ![解读结果：现在怎么做、判断理由与原话依据](docs/screenshots/reading-result.jpg) |
 
 ## 工作思路
 
@@ -23,6 +33,10 @@
 
 ## 快速开始（Windows 浏览器版）
 
+> **方式 A —— 预编译包：** 从[最新 Release](https://github.com/sdss-arch/xianwai/releases/latest) 下载 `xianwai-windows-0.6.1.zip`，解压后直接看第 2 步，无需 git 或构建工具。
+>
+> **方式 B —— 从源码运行：**
+
 1. 安装 [Node.js 22 或更新版本](https://nodejs.org/)，解压或克隆本项目。
 2. 双击 `Start.cmd`。首次运行需要下载约 2.5 GB 的本地模型及推理程序，启动完成后会打开浏览器。
 3. 点击「载入示例」填入一段对话，再点击「开始解读」。保持电脑和启动窗口运行。
@@ -38,6 +52,8 @@
 普通 HTTP 局域网入口可用于导入和文字分析。HTTPS 入口与 HTTP 入口的档案各自保存在浏览器。需要复用之前的上级档案时，在「上级档案 → 迁移档案」先导出，再到另一个入口导入。
 
 ## Android App
+
+> **下载：** 从[最新 Release](https://github.com/sdss-arch/xianwai/releases/latest) 下载 `xianwai-android-0.6.1.apk`，或按下方「重新打包 Android APK」自行构建。
 
 1. 在 Android 手机上打开签名的 APK，按系统提示安装。首次从浏览器或文件管理器安装时，Android 可能要求允许该来源安装应用。
 2. 打开「设置」，填入你的 HTTPS API 地址、模型名和服务商要求的密钥。支持 OpenAI 兼容的 Chat Completions 接口。可以先「测试连接」，再「保存设置」。密钥由 Android Keystore 配合加密保存在本机。

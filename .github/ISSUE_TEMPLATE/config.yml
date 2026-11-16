@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & discussion / 使用问题与讨论
+    url: https://github.com/sdss-arch/xianwai/discussions
+    about: Ask usage questions or share ideas / 提出使用问题、分享想法
+  - name: Security vulnerability / 安全漏洞
+    url: https://github.com/sdss-arch/xianwai/security/advisories/new
+    about: Report security issues privately / 私密报告安全问题，勿开公开 Issue

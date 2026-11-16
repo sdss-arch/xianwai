@@ -1,10 +1,20 @@
 # Xianwai · Workplace Dialogue Interpretation (弦外)
 
+[![CI](https://github.com/sdss-arch/xianwai/actions/workflows/ci.yml/badge.svg)](https://github.com/sdss-arch/xianwai/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/sdss-arch/xianwai)](https://github.com/sdss-arch/xianwai/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Paste a conversation, or record/import audio and proofread it, then add context and pick a manager. Xianwai extracts explicit asks, possible subtext, the original lines behind each reading, and a reply you can copy. You can keep separate profiles for several managers — communication habits, priorities, and concrete examples — and the model can distill habits from your confirmed cases for you to review.
 
 > Also available in [中文](README.zh-CN.md).
+
+**📥 Download:** [Windows installer-free package](https://github.com/sdss-arch/xianwai/releases/latest) · [Android APK](https://github.com/sdss-arch/xianwai/releases/latest) · or run from source (below).
+
+## Screenshots
+
+| Workbench with a loaded example | A real model reading (local Qwen3-4B) |
+| --- | --- |
+| ![Xianwai workbench with an example dialogue loaded](docs/screenshots/workbench.jpg) | ![Reading result showing next steps, reasoning, and original-line evidence](docs/screenshots/reading-result.jpg) |
 
 ## How it works
 
@@ -24,6 +34,10 @@ Model drafts a communication habit → you approve it into the manager profile
 
 ## Quick start (Windows, browser)
 
+> **Option A — prebuilt package:** download `xianwai-windows-0.6.1.zip` from the [latest release](https://github.com/sdss-arch/xianwai/releases/latest), unpack it, and jump to step 2. No git or build tools needed.
+>
+> **Option B — from source:**
+
 1. Install [Node.js 22 or newer](https://nodejs.org/) and unpack or clone this repository.
 2. Double-click `Start.cmd`. The first run downloads about 2.5 GB of local model and inference engine, then opens your browser.
 3. Click "Load example" to fill in a dialogue, then "Start reading". Keep the computer and the launcher window running.
@@ -39,6 +53,8 @@ If an older version already occupies the default port 8787, the launcher tries 8
 A plain HTTP LAN entry works for import and text analysis; microphone access and custom API configuration require HTTPS or the computer-local entry. Profiles on the HTTP and HTTPS entries are stored separately — export them under "Profiles → Migrate profiles" and import on the other entry.
 
 ## Android app
+
+> **Download:** grab `xianwai-android-0.6.1.apk` from the [latest release](https://github.com/sdss-arch/xianwai/releases/latest), or build it yourself (see "Rebuilding the Android APK" below).
 
 1. Open the signed APK on an Android phone and install following the system prompts. The first install from a browser or file manager may require allowing that source.
 2. Open "Settings" and enter your HTTPS API address, model name, and the key your provider requires. Any OpenAI-compatible Chat Completions endpoint works. Use "Test connection" first, then "Save". The key is stored encrypted with the Android Keystore.
