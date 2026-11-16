@@ -1,68 +1,67 @@
-name: Bug report
-description: Report a problem with Xianwai / 报告弦外的问题
+name: Bug 报告
+description: 报告弦外的问题 / Report a problem with Xianwai
 title: "[Bug]: "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve Xianwai! / 感谢帮助改进弦外！
-        For security issues please use the private advisory flow in SECURITY.md / 安全漏洞请走 SECURITY.md 的私密通告流程
+        感谢帮助改进弦外！安全漏洞请走 SECURITY.md 的私密通告流程，不要公开提交。
   - type: dropdown
     id: platform
     attributes:
-      label: Platform / 平台
+      label: 平台
       options:
-        - Browser (Windows) / 浏览器（Windows）
-        - Browser (other) / 浏览器（其他）
-        - Android / 安卓
-        - iOS / iPhone
-        - Build scripts / 构建脚本
+        - 浏览器（Windows）
+        - 浏览器（其他）
+        - 安卓
+        - iPhone
+        - 构建脚本
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Version / 版本
-      description: e.g. 0.6.1, or commit hash / 例如 0.6.1 或提交哈希
+      label: 版本
+      description: 例如 0.6.1，或提交哈希
       placeholder: "0.6.1"
     validations:
       required: true
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened? / 出现了什么问题？
-      description: Actual behaviour, including error messages / 实际表现，包括报错信息
+      label: 出现了什么问题？
+      description: 实际表现，包括报错信息
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Steps to reproduce / 复现步骤
-      description: Numbered steps from a clean state / 从干净状态开始的分步操作
+      label: 复现步骤
+      description: 从干净状态开始的分步操作
       placeholder: |
-        1. Open …
-        2. Click …
-        3. See error
+        1. 打开……
+        2. 点击……
+        3. 出现报错
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Expected behaviour / 期望的行为
+      label: 期望的行为
     validations:
       required: true
   - type: textarea
     id: environment
     attributes:
-      label: Environment / 环境
-      description: OS, browser or Android version, model endpoint (local or cloud) / 操作系统、浏览器或安卓版本、模型来源（本地或云端）
+      label: 环境
+      description: 操作系统、浏览器或安卓版本、模型来源（本地或云端）
     validations:
       required: true
   - type: checkboxes
     id: privacy
     attributes:
-      label: Privacy check / 隐私确认
+      label: 隐私确认
       options:
-        - label: I have removed personal data, API keys, and real conversations from this report / 我已从报告中移除个人信息、API 密钥和真实对话内容
+        - label: 我已从报告中移除个人信息、API 密钥和真实对话内容
           required: true

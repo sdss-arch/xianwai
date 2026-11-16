@@ -1,4 +1,4 @@
-name: Build iPhone app
+name: 构建 iPhone 应用
 
 on:
   workflow_dispatch:
@@ -15,9 +15,9 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
-      - name: Package web interface and offline voice model
+      - name: 打包界面与离线转写模型
         run: node android/build-assets.mjs ios/AppAssets
-      - name: Check packaged voice model
+      - name: 校验转写模型
         run: |
           model=ios/AppAssets/web/voice-model/whisper-base/onnx
           test -s ios/AppAssets/web/index.html
@@ -25,7 +25,7 @@ jobs:
           3e345e977b55620a37c0c2b2af0644e019afdfad562dcf71eb929bb7274285f9  $model/encoder_model_quantized.onnx
           a6beb6baabb66f00b6a686d828c95ffca6146d51900cbad0266cad38f64cf861  $model/decoder_model_merged_quantized.onnx
           EOF
-      - name: Build for iPhone without signing
+      - name: 无签名编译 iPhone 版
         working-directory: ios
         run: |
           xcodebuild -version

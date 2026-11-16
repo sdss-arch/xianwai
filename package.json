@@ -1,7 +1,7 @@
 {
   "name": "xianwai",
   "version": "0.6.1",
-  "description": "Workplace dialogue interpretation: paste or record a conversation, get evidence-backed readings and replies, and build a manager profile over time.",
+  "description": "职场对话解读：贴入或录制一段对话，获得带原话依据的解读与可复制的回复，并长期积累上级沟通档案。",
   "keywords": [
     "workplace",
     "dialogue-analysis",

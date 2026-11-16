@@ -1,4 +1,4 @@
-name: CI
+name: 持续集成
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: JavaScript syntax check
+      - name: JavaScript 语法检查
         run: |
           count=0
           while IFS= read -r file; do
@@ -28,20 +28,20 @@ jobs:
           done < <(find . -path ./node_modules -prune -o -path ./public/vendor -prune -o \( -name '*.mjs' -o -name '*.js' \) -print)
           echo "Checked $count JavaScript files."
 
-      - name: Analysis rules unit test
+      - name: 语境规则单元测试
         run: node tests/browser/subtext-actions-check.mjs
 
-      - name: Python syntax check
+      - name: Python 语法检查
         run: python3 -m py_compile tests/android/*.py
 
-      - name: PowerShell syntax check
-        run: >
+      - name: PowerShell 语法检查
+        run: >-
           pwsh -NoProfile -Command
           '$errors = $null;
           [void][System.Management.Automation.Language.Parser]::ParseFile("Start.ps1", [ref]$null, [ref]$errors);
           if ($errors) { $errors | Format-List; exit 1 }'
 
-      - name: Server smoke test
+      - name: 服务冒烟测试
         run: |
           node server.mjs > /tmp/server.log 2>&1 &
           echo $! > /tmp/server.pid

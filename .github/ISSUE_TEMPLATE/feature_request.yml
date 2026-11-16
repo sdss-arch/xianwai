@@ -1,46 +1,45 @@
-name: Feature request
-description: Suggest an idea for Xianwai / 提出弦外的功能建议
+name: 功能建议
+description: 提出弦外的功能建议 / Suggest an idea for Xianwai
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to share an idea! / 感谢你的建议！
-        请用中文或英文描述均可 / Descriptions in Chinese or English are both welcome
+        感谢你的建议！欢迎用中文描述。
   - type: textarea
     id: problem
     attributes:
-      label: Problem / 要解决的问题
-      description: What is frustrating or missing today? / 现在有什么不便或缺失？
-      placeholder: As a user who …, I find it hard to … / 作为…的用户，我发现…很难做到
+      label: 要解决的问题
+      description: 现在有什么不便或缺失？
+      placeholder: 作为……的用户，我发现……很难做到
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed solution / 建议的方案
-      description: How should it work? / 希望它怎么工作？
+      label: 建议的方案
+      description: 希望它怎么工作？
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives considered / 考虑过的替代方案
+      label: 考虑过的替代方案
   - type: dropdown
     id: platform
     attributes:
-      label: Where would this apply? / 涉及哪些端？
+      label: 涉及哪些端？
       options:
-        - All platforms / 全部端
-        - Browser / 浏览器
-        - Android / 安卓
-        - iOS / iPhone
-        - Documentation / 文档
+        - 全部端
+        - 浏览器
+        - 安卓
+        - iPhone
+        - 文档
     validations:
       required: true
   - type: textarea
     id: extra
     attributes:
-      label: Additional context / 补充说明
-      description: Screenshots, example dialogues (please anonymise), links / 截图、对话示例（请脱敏）、链接
+      label: 补充说明
+      description: 截图、对话示例（请脱敏）、链接
