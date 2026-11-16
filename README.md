@@ -142,6 +142,16 @@ PORT=8787 node server.mjs        # 另开窗口
 node tests/browser/check.mjs
 ```
 
+## 参与贡献
+
+欢迎任何形式的参与：修复 Bug、补充测试、完善文档、提功能建议，或在[讨论区](https://github.com/sdss-arch/xianwai/discussions)分享使用心得。项目刚开始开源，最需要的帮助是：
+
+- **试用并反馈**：用真实对话跑一跑，把不对劲的地方提成 [Issue](https://github.com/sdss-arch/xianwai/issues/new/choose)
+- **认领任务**：从标注 [good first issue](https://github.com/sdss-arch/xianwai/labels/good%20first%20issue) 的小任务开始
+- **完善文档**：使用教程、场景示例、常见问题，都欢迎直接提 PR
+
+贡献流程与代码规范见[参与指南](CONTRIBUTING.md)；参与前请阅读[行为准则](CODE_OF_CONDUCT.md)。所有贡献者提交即表示同意以 [MIT 许可证](LICENSE)授权其贡献。
+
 ## 免责声明
 
 弦外给出的是根据所提交材料生成的推断，不是对他人意图的确定判断，也不构成职业或法律建议。试用真实案例时，尤其留意是否把之前的经历当成了本次要求。
