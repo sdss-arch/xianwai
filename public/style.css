@@ -73,6 +73,7 @@ h2 { font-size: 20px; line-height: 1.25; letter-spacing: -.025em; }
 .panel-heading { margin-bottom: 17px; }
 .section-label { display: none; }
 .model-indicator, .status-pill { display: inline-flex; align-items: center; gap: 5px; max-width: 52%; padding: 5px 8px; border-radius: 5px; background: #efeae0; color: #655a49; font-size: 11px; font-weight: 620; overflow-wrap: anywhere; }
+#demo-banner { padding: 9px 16px; background: #24392f; color: #f2efe6; font-size: 13px; line-height: 1.5; text-align: center; }
 .model-indicator.connected { background: var(--pale); color: var(--accent); }
 .model-indicator.connected::before { content: ""; width: 6px; height: 6px; flex: none; background: #5c876f; border-radius: 50%; }
 .status-pill { flex: none; max-width: none; white-space: nowrap; }

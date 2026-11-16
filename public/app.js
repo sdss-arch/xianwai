@@ -573,6 +573,10 @@ function invalidate() {
 
 function updateAnalysisNotice() {
   const note = document.querySelector('.fine-print');
+  if (modelLocation === 'demo') {
+    note.textContent = '演示版不会提交你输入的文字，解读结果为预置示例。';
+    return;
+  }
   const inputs = source === 'audio' ? '所选转写文字、背景与所选档案' : '对话文字、背景与所选档案';
   const destination = mobile || modelLocation === 'custom' ? '你配置的模型服务' : modelLocation === 'remote' ? '云端模型' : '分析服务';
   note.textContent = '提交' + inputs + (personalAvailable && usePersonal.checked ? '、个人信息' : '') + '给' + destination + '。';
@@ -1061,4 +1065,4 @@ restoreDraft();
 if (personalAvailable) setUpPersonalProfile();
 route();
 if (mobile) updateAnalysisNotice();
-else if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+else if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});

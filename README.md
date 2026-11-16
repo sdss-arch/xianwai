@@ -6,6 +6,8 @@
 
 弦外是一款 **AI 职场对话解读应用**：贴入对话原文，或录音、导入音频并校对，再补充背景和选择一位上级，AI 会整理出明确要求、可能的潜台词、逐句原话依据和可复制的回复。可以为多位上级分别记录沟通习惯、优先事项和具体例子；模型也可以从你确认的案例中梳理沟通习惯，核对后加入档案。
 
+**🌐 在线演示：** [点开即看，无需安装](https://sdss-arch.github.io/xianwai/)（预置示例解读）
+
 **📥 下载：** [Windows 压缩包](https://github.com/sdss-arch/xianwai/releases/latest) · [Android APK](https://github.com/sdss-arch/xianwai/releases/latest) · 或按下方说明从源码运行。
 
 ## 界面截图
